@@ -1,0 +1,54 @@
+name: backpack-example
+version: 0.1.0.0
+synopsis: A dummy package which exposes a backpack signature
+license: BSD-3-Clause OR Apache-2.0
+category: Development
+
+dependencies:
+  - base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - concat-indef
+  signatures:
+  - Str
+
+internal-libraries:
+  concat-indef:
+    source-dirs: sigs
+    signatures:
+    - Str
+
+  str-bytestring:
+    source-dirs: str-bs
+    dependencies:
+    - bytestring
+    exposed-modules:
+    - Str
+
+  stringutils-indef:
+    source-dirs: su-indef
+    implicit-signatures:
+    - Str
+    dependencies:
+    - concat-indef
+    exposed-modules:
+    - StringUtils
+
+  one-string:
+    implicit-signatures:
+    - Str
+    dependencies:
+    - concat-indef
+    - stringutils-indef
+
+  two-string:
+    implicit-signatures:
+    - Str
+    - Str2
+    dependencies:
+    - concat-indef
+    - name: stringutils-indef
+      mixin:
+      - requires (Str as Str2)

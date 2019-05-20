@@ -1,0 +1,6 @@
+signature Str where
+
+data Str
+
+null :: Str
+append :: Str -> Str -> Str

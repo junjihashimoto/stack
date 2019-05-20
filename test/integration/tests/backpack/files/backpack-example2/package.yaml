@@ -1,0 +1,13 @@
+name: backpack-example2
+version: 0.1.0.0
+synopsis: A dummy package which uses a backpack signature
+license: BSD-3-Clause OR Apache-2.0
+category: Development
+
+dependencies:
+  - base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - backpack-example
